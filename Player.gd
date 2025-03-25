@@ -19,5 +19,5 @@ func _physics_process(delta: float) -> void:
 	else:
 		velocity.x = move_toward(velocity.x, 0, speed * delta) # move character from vel.x towards 0, at speed
 
-	
+	#xd
 	
