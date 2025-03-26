@@ -1,7 +1,12 @@
-[gd_scene load_steps=3 format=3 uid="uid://dbfe3pen1hdko"]
+[gd_scene load_steps=4 format=3 uid="uid://dbfe3pen1hdko"]
 
 [ext_resource type="PackedScene" uid="uid://docdjdht5h1b8" path="res://player.tscn" id="1_e2o6t"]
 [ext_resource type="PackedScene" uid="uid://b5b3qrrcbmd41" path="res://block.tscn" id="3_feb5d"]
+
+[sub_resource type="Curve" id="Curve_e2o6t"]
+_limits = [0.0, 30.0, 0.0, 1.0]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.195205, 8.13304), 0.0, 0.0, 0, 0]
+point_count = 2
 
 [node name="Game" type="Node2D"]
 
@@ -110,3 +115,15 @@ position = Vector2(0, 96)
 
 [node name="Block6" parent="Blocks" instance=ExtResource("3_feb5d")]
 position = Vector2(128, 176)
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+position = Vector2(160, 1)
+amount = 10
+emission_shape = 3
+emission_rect_extents = Vector2(250, 1)
+direction = Vector2(1, 2)
+spread = 88.69
+gravity = Vector2(0, 2000)
+split_scale = true
+scale_curve_x = null
+scale_curve_y = SubResource("Curve_e2o6t")
