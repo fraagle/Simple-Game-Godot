@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://b0nbj6nd23pp8"]
+
+[ext_resource type="Script" uid="uid://btdujhxunm6ht" path="res://flower.gd" id="1_p547k"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_oa668"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_p547k"]
+radius = 6.0
+
+[node name="Flower" type="CharacterBody2D"]
+script = ExtResource("1_p547k")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+light_mask = 2
+visibility_layer = 2
+shape = SubResource("CircleShape2D_oa668")
+
+[node name="FlowerArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FlowerArea"]
+shape = SubResource("CircleShape2D_p547k")
+debug_color = Color(0.988118, 0, 0.305568, 0.42)
+
+[connection signal="area_entered" from="FlowerArea" to="." method="_on_area_2d_area_entered"]
+[connection signal="area_exited" from="FlowerArea" to="." method="_on_area_2d_area_exited"]

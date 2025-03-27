@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://dsuj315t3dt75"]
+
+[ext_resource type="Script" uid="uid://61iey18ppdjf" path="res://flower_pot.gd" id="1_a6an8"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tjlim"]
+size = Vector2(8.5, 20)
+
+[node name="FlowerPot" type="Area2D"]
+script = ExtResource("1_a6an8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -10)
+shape = SubResource("RectangleShape2D_tjlim")
+debug_color = Color(0.757911, 0.453989, 0, 0.42)
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

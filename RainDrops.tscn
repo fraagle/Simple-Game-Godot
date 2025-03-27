@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=3 uid="uid://bgt3ntb530ybl"]
+
+[sub_resource type="Curve" id="Curve_e2o6t"]
+_limits = [0.0, 30.0, 0.0, 1.0]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.195205, 8.13304), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[node name="CPUParticles2D" type="CPUParticles2D"]
+amount = 10
+emission_shape = 3
+emission_rect_extents = Vector2(250, 1)
+direction = Vector2(1, 2)
+spread = 88.69
+gravity = Vector2(0, 2000)
+split_scale = true
+scale_curve_x = null
+scale_curve_y = SubResource("Curve_e2o6t")

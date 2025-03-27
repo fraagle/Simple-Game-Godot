@@ -1,0 +1,32 @@
+[gd_scene load_steps=6 format=3 uid="uid://dbfe3pen1hdko"]
+
+[ext_resource type="Script" uid="uid://dhjsjrl860mm0" path="res://world.gd" id="1_fc0e3"]
+[ext_resource type="PackedScene" uid="uid://rfe525p157kn" path="res://level_completed.tscn" id="2_7jktm"]
+[ext_resource type="PackedScene" uid="uid://c7mp3j4d3bulx" path="res://player_cloud.tscn" id="2_e2o6t"]
+[ext_resource type="PackedScene" uid="uid://b0nbj6nd23pp8" path="res://flower.tscn" id="3_fc0e3"]
+[ext_resource type="PackedScene" uid="uid://dsuj315t3dt75" path="res://flower_pot.tscn" id="4_fc0e3"]
+
+[node name="World" type="Node2D"]
+script = ExtResource("1_fc0e3")
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="LevelCompleted" parent="UI" instance=ExtResource("2_7jktm")]
+visible = false
+
+[node name="PlayerCloud" parent="." instance=ExtResource("2_e2o6t")]
+position = Vector2(31, 58)
+
+[node name="Flower" parent="." instance=ExtResource("3_fc0e3")]
+position = Vector2(96, 160)
+
+[node name="FlowerPot" parent="." instance=ExtResource("4_fc0e3")]
+position = Vector2(288, 168)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(1, 0)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+polygon = PackedVector2Array(-1, 0, 7, 0, 7, 168, 311, 168, 311, 0, 327, 0, 327, 184, -9, 184, -9, 0)
+
+[node name="Polygon2D" type="Polygon2D" parent="StaticBody2D/CollisionPolygon2D"]

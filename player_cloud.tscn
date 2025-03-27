@@ -1,0 +1,66 @@
+[gd_scene load_steps=11 format=3 uid="uid://c7mp3j4d3bulx"]
+
+[ext_resource type="Script" uid="uid://dyg8dft4eevy2" path="res://player_cloud.gd" id="1_ki4b7"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_mxv87"]
+radius = 6.99999
+height = 42.0
+
+[sub_resource type="Curve" id="Curve_ki4b7"]
+_limits = [0.0, 1024.0, 0.0, 1024.0]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(465.099, 1024), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveXYZTexture" id="CurveXYZTexture_l5wl7"]
+curve_y = SubResource("Curve_ki4b7")
+
+[sub_resource type="Curve" id="Curve_l5wl7"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_ksekp"]
+_limits = [0.0, 30.0, 0.0, 1.0]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.30916, 8.10866), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_pudsp"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveXYZTexture" id="CurveXYZTexture_jykwx"]
+curve_x = SubResource("Curve_l5wl7")
+curve_y = SubResource("Curve_ksekp")
+curve_z = SubResource("Curve_pudsp")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ksekp"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(20, -1, 1)
+directional_velocity_min = 1.0
+directional_velocity_max = 1.0
+directional_velocity_curve = SubResource("CurveXYZTexture_l5wl7")
+gravity = Vector3(0, 900, 0)
+scale_curve = SubResource("CurveXYZTexture_jykwx")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pudsp"]
+size = Vector2(40, 129)
+
+[node name="PlayerCloud" type="CharacterBody2D"]
+script = ExtResource("1_ki4b7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = -1.57079
+shape = SubResource("CapsuleShape2D_mxv87")
+
+[node name="RainParticlesGPU2D" type="GPUParticles2D" parent="."]
+amount = 20
+lifetime = 0.55
+visibility_rect = Rect2(-100, -200, 200, 300)
+process_material = SubResource("ParticleProcessMaterial_ksekp")
+
+[node name="RainZone" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RainZone"]
+position = Vector2(0, 64.5)
+shape = SubResource("RectangleShape2D_pudsp")
+debug_color = Color(0.994676, 0, 0.218208, 0.42)
