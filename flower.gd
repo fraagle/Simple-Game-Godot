@@ -5,6 +5,11 @@ var cloud_chase = null
 
 @export var speed = 60
 @export var gravity = 900
+@export var jump_force = 300
+
+
+
+
 
 func _physics_process(delta: float) -> void:
 	
@@ -33,3 +38,8 @@ func _on_area_2d_area_exited(area: Area2D) -> void:
 	cloud_chase = false
 
 # Flower Pot 
+
+
+func _on_player_cloud_thunder() -> void:
+	if cloud_chase:
+		velocity.y -= jump_force

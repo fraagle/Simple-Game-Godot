@@ -2,7 +2,9 @@
 
 [ext_resource type="Script" uid="uid://btdujhxunm6ht" path="res://flower.gd" id="1_p547k"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_oa668"]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_p547k"]
+radius = 6.0
+height = 22.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_p547k"]
 radius = 6.0
@@ -12,7 +14,7 @@ collision_layer = 4
 script = ExtResource("1_p547k")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_oa668")
+shape = SubResource("CapsuleShape2D_p547k")
 
 [node name="FlowerArea" type="Area2D" parent="."]
 collision_layer = 4

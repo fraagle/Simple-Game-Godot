@@ -7,4 +7,4 @@
 next_level = ExtResource("2_mc20k")
 
 [node name="Flower" parent="." index="2"]
-position = Vector2(32, 150)
+position = Vector2(33, 148)

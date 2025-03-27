@@ -21,3 +21,9 @@ func show_level_completed():
 	get_tree().paused = false
 	if next_level is PackedScene:
 		get_tree().change_scene_to_packed(next_level)
+	else:
+		get_tree().quit()
+
+
+func _on_player_cloud_reset() -> void:
+	get_tree().reload_current_scene()

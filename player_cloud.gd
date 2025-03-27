@@ -1,5 +1,10 @@
 extends CharacterBody2D
 
+
+signal thunder
+signal reset
+
+
 @export var speed: float = 100.0
 @export var acceleration: float = 400.0
 @export var air_friction: float = 500.0
@@ -8,10 +13,20 @@ extends CharacterBody2D
 @onready var rain_particles_gpu_2d: GPUParticles2D = $RainParticlesGPU2D
 
 
+@onready var thunder_claps_label: Label = $"../UI/ThunderClapsLabel"
+
+
 #@onready var rain_zone: Area2D = $RainZone
 @onready var collision_shape_2d: CollisionShape2D = $RainZone/CollisionShape2D
 
 #var ray_cast_2d.target_position.y = 110.0
+
+var thunder_claps = 1
+
+
+func _ready():
+	thunder_claps_label.text = str(thunder_claps)
+
 
 func _physics_process(delta: float) -> void:
 
@@ -42,6 +57,20 @@ func _physics_process(delta: float) -> void:
 	else:
 		velocity.x = move_toward(velocity.x, 0, air_friction * delta) # move character from vel.x towards 0, at speed
 	
+	
+	if Input.is_action_just_pressed('up'):
+		if thunder_claps > 0:
+			print('thunder')
+			thunder.emit()
+			thunder_claps -= 1
+			thunder_claps_label.text = str(thunder_claps)
+
+	
+	if Input.is_action_just_pressed('resetLevel'):
+		
+		reset.emit()
+	
+	
 	move_and_slide()
 	
 	#
@@ -49,15 +78,15 @@ func _physics_process(delta: float) -> void:
 	#rain_particles_gpu_2d.scale.y = length / 100.0
 
 func set_rain_length(length):
-	var material = rain_particles_gpu_2d.process_material
-	if material is ParticleProcessMaterial:
-		var gravity = material.gravity
+	var particle_material = rain_particles_gpu_2d.process_material
+	if particle_material is ParticleProcessMaterial:
+		var gravity = particle_material.gravity
 		var speed = abs(gravity.y)
 		
 		if speed > 0:
 			var lifetime = length / speed 
 			rain_particles_gpu_2d.lifetime = lifetime * 5
-			print(rain_particles_gpu_2d.lifetime)
+			#print(rain_particles_gpu_2d.lifetime)
 			
 			
 			
