@@ -15,10 +15,10 @@ script = ExtResource("1_036b0")
 visible = false
 
 [node name="PlayerCloud" parent="." instance=ExtResource("3_pkg7o")]
-position = Vector2(31, 58)
+position = Vector2(160, 56)
 
 [node name="Flower" parent="." instance=ExtResource("4_gbfbk")]
-position = Vector2(96, 160)
+position = Vector2(24, 160)
 
 [node name="FlowerPot" parent="." instance=ExtResource("5_ioo17")]
 position = Vector2(288, 168)

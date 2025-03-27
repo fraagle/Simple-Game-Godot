@@ -6,6 +6,7 @@ extends Node2D
 @onready var flower_pot: Area2D = $FlowerPot
 @onready var level_completed: ColorRect = $UI/LevelCompleted
 
+@export var next_level: PackedScene
 
 func _ready():
 	polygon_2d.polygon = collision_polygon_2d.polygon
@@ -18,5 +19,5 @@ func show_level_completed():
 	get_tree().paused = true
 	await get_tree().create_timer(2.0).timeout
 	get_tree().paused = false
-	get_tree().reload_current_scene()
-	
+	if next_level is PackedScene:
+		get_tree().change_scene_to_packed(next_level)

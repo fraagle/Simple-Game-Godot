@@ -13,4 +13,12 @@ position = Vector2(0, -10)
 shape = SubResource("RectangleShape2D_tjlim")
 debug_color = Color(0.757911, 0.453989, 0, 0.42)
 
+[node name="Label" type="Label" parent="."]
+offset_left = -10.0
+offset_top = -27.0
+offset_right = 73.0
+offset_bottom = -4.0
+scale = Vector2(0.235, 0.235)
+text = "Flower Pot"
+
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]

@@ -64,3 +64,10 @@ process_material = SubResource("ParticleProcessMaterial_ksekp")
 position = Vector2(0, 64.5)
 shape = SubResource("RectangleShape2D_pudsp")
 debug_color = Color(0.994676, 0, 0.218208, 0.42)
+
+[node name="Label" type="Label" parent="."]
+offset_left = -23.0
+offset_top = -37.0
+offset_right = 22.0
+offset_bottom = -14.0
+text = "Cloud"
