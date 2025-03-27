@@ -3,10 +3,16 @@ extends CharacterBody2D
 var cloud = null
 var cloud_chase = null
 
-var speed = 40
-
+@export var speed = 60
+@export var gravity = 900
 
 func _physics_process(delta: float) -> void:
+	
+	if not is_on_floor():
+		#print('gravity')
+		velocity.y += gravity * delta  # Multiply by delta to make it time dependent not frame dep.
+	
+	
 	if cloud_chase:
 		position.x = move_toward(position.x, cloud.global_position.x, speed * delta)
 		

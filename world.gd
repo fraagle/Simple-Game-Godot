@@ -1,7 +1,7 @@
 extends Node2D
 
-@onready var collision_polygon_2d: CollisionPolygon2D = $StaticBody2D/CollisionPolygon2D
-@onready var polygon_2d = $StaticBody2D/CollisionPolygon2D/Polygon2D
+#@onready var collision_polygon_2d: CollisionPolygon2D = $StaticBody2D/CollisionPolygon2D
+#@onready var polygon_2d = $StaticBody2D/CollisionPolygon2D/Polygon2D
 
 @onready var flower_pot: Area2D = $FlowerPot
 @onready var level_completed: ColorRect = $UI/LevelCompleted
@@ -9,7 +9,7 @@ extends Node2D
 @export var next_level: PackedScene
 
 func _ready():
-	polygon_2d.polygon = collision_polygon_2d.polygon
+	#polygon_2d.polygon = collision_polygon_2d.polygon
 		
 	flower_pot.level_completed_signal.connect(show_level_completed)
 

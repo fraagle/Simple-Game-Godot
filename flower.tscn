@@ -8,14 +8,15 @@
 radius = 6.0
 
 [node name="Flower" type="CharacterBody2D"]
+collision_layer = 4
 script = ExtResource("1_p547k")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-light_mask = 2
-visibility_layer = 2
 shape = SubResource("CircleShape2D_oa668")
 
 [node name="FlowerArea" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="FlowerArea"]
 shape = SubResource("CircleShape2D_p547k")
